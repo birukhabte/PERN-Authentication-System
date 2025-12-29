@@ -16,9 +16,9 @@ const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
     //Register Route
     router.post("/register", async (req, res) => {
-        const { username, email, password } = req.body;
+        const { name, email, password } = req.body;
 
-        if (!username || !email || !password) {
+        if (!name || !email || !password) {
             return res.status(400).json({ error: "All fields are required" });
         }
         const userExists = await pool.query(
